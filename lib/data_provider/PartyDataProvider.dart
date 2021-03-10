@@ -1,4 +1,3 @@
-import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'dart:convert';
@@ -12,7 +11,7 @@ class PartyDataProvider{
   PartyDataProvider({@required this.httpClient}):assert(httpClient != null);
 
 
-  Future<List<Party>>GetParties()async{
+  Future<List<Party>>getParties()async{
 
     final url = "http://192.168.56.1:8080/v1/parties";
     List<Party>parties;
@@ -46,7 +45,7 @@ class PartyDataProvider{
 
   }
 
-  Future<Party>GetParty(String id) async{
+  Future<Party>getParty(String id) async{
     final url = "http://192.168.56.1:8080/v1/party";
     Party party;
 
@@ -73,7 +72,7 @@ class PartyDataProvider{
     return party;
   }
 
-  Future<Party>PostParty(Party party)async{
+  Future<Party>postParty(Party party)async{
     final url = "http://192.168.56.1:8080/v1/party";
     Party pt;
 
@@ -100,7 +99,7 @@ class PartyDataProvider{
     return pt;
   }
 
-  Future<Party>PutParty(Party party)async{
+  Future<Party>putParty(Party party)async{
 
     final url = "http://192.168.56.2:8080/v1/party/${party.id}";
     Party pt;
@@ -129,7 +128,7 @@ class PartyDataProvider{
 
   }
 
-  Future<void>DeleteParty(String id)async{
+  Future<void>deleteParty(String id)async{
 
     final url = "http://198.168.56.1:8080/v1/party/$id";
 

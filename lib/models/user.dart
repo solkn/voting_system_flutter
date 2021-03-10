@@ -24,10 +24,10 @@ class User{
 
   List<Object>get props =>[id,fullName,age,email,phone,password,roleID,role];
 
-  factory User.fromJso(Map<String,dynamic>json){
+  factory User.fromJson(Map<String,dynamic>json){
     return User.fullInfo(
       id: json["id"],
-      fullName: json["name"],
+      fullName: json["full_name"],
       age: json["age"],
       email: json["email"],
       phone:json["phone"] ,
@@ -41,6 +41,7 @@ class User{
     return 'User.fullInfo{id:$id,fullName:$fullName,age:$age,email:$email,phone:$phone'
         'password:$password,roleID:$roleID,role:$role}';
   }
+
 }
 
 
