@@ -15,7 +15,7 @@ class RoleDataProvider {
   List<Role> roles = [];
   Util util = new Util();
 
-  Future<List<Role>> GetRoles() async {
+  Future<List<Role>> getRoles() async {
     final url = 'http://192.168.56.1:8080/v1/role';
     try {
       String token = await util.getUserToken();
@@ -39,7 +39,7 @@ class RoleDataProvider {
     }
     return roles;
   }
-  Future<Role> getRole(String clubId) async {
+  Future<Role> getRole(String id) async {
     Role role;
     final url = 'http://192.168.56.1:8080/v1/role';
     try {
