@@ -105,7 +105,7 @@ class CandidateDataProvider {
   }
 
   Future<Candidate> putCandidate(Candidate candidate) async {
-    final url = "http://192.168.56.2:8080/v1/party/${candidate.id}";
+    final url = "http://192.168.56.2:8080/v1/bloc.party/${candidate.id}";
     Candidate cndt;
     Util util = new Util();
     String token = await util.getUserToken();
