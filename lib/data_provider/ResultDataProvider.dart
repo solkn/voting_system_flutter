@@ -112,7 +112,7 @@ class ResultDataProvider{
 
   Future<Result>putResult(Result result)async{
 
-    final url = "http://192.168.56.2:8080/v1/party/${result.id}";
+    final url = "http://192.168.56.2:8080/v1/bloc.party/${result.id}";
     Result rslt;
     Util util = new Util();
     String token = await util.getUserToken();
@@ -149,7 +149,7 @@ class ResultDataProvider{
 
   Future<void>deleteResult(String id)async{
 
-    final url = "http://198.168.56.1:8080/v1/party/$id";
+    final url = "http://198.168.56.1:8080/v1/bloc.party/$id";
 
     try{
 
