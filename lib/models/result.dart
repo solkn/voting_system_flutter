@@ -21,6 +21,6 @@ class Result{
   }
 
   String toString(){
-    return 'Result{id:$id,ballot:$ballot,partyID:$partyID,party:$party}';
+    return 'Result{id:$id,ballot:$ballot,partyID:$partyID,bloc.party:$party}';
   }
 }
