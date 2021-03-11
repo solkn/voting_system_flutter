@@ -46,7 +46,7 @@ class PartyDataProvider{
   }
 
   Future<Party>getParty(String id) async{
-    final url = "http://192.168.56.1:8080/v1/party";
+    final url = "http://192.168.56.1:8080/v1/bloc.party";
     Party party;
 
     try{
@@ -73,7 +73,7 @@ class PartyDataProvider{
   }
 
   Future<Party>postParty(Party party)async{
-    final url = "http://192.168.56.1:8080/v1/party";
+    final url = "http://192.168.56.1:8080/v1/bloc.party";
     Party pt;
 
     try{
@@ -101,7 +101,7 @@ class PartyDataProvider{
 
   Future<Party>putParty(Party party)async{
 
-    final url = "http://192.168.56.2:8080/v1/party/${party.id}";
+    final url = "http://192.168.56.2:8080/v1/bloc.party/${party.id}";
     Party pt;
 
     try{
@@ -130,7 +130,7 @@ class PartyDataProvider{
 
   Future<void>deleteParty(String id)async{
 
-    final url = "http://198.168.56.1:8080/v1/party/$id";
+    final url = "http://198.168.56.1:8080/v1/bloc.party/$id";
 
     try{
 
