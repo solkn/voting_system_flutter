@@ -23,8 +23,8 @@ class PartyPostingState extends PartyStates{}
 class PostedState extends PartyStates{}
 
 class PostingErrorState extends PartyStates{
-   final String message;
-   PostingErrorState({this.message});
+  final String message;
+  PostingErrorState({this.message});
 }
 
 class PartyUpdatingState extends PartyStates{}
