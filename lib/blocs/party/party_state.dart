@@ -20,11 +20,11 @@ class PartyFetchingErrorState extends PartyStates{
 }
 class PartyPostingState extends PartyStates{}
 
-class PostedState extends PartyStates{}
+class PartyPostedState extends PartyStates{}
 
-class PostingErrorState extends PartyStates{
+class PartyPostingErrorState extends PartyStates{
   final String message;
-  PostingErrorState({this.message});
+  PartyPostingErrorState({this.message});
 }
 
 class PartyUpdatingState extends PartyStates{}
