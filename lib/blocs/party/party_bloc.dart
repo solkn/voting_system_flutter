@@ -6,7 +6,7 @@ import 'package:voting_system_flutter/repository/repository.dart';
 class PartyBloc extends Bloc<PartyEvents,PartyStates>{
   final PartyRepository partyRepository;
 
-  PartyBloc({@required this.partyRepository}):super(PartyUnintializedStae());
+  PartyBloc({@required this.partyRepository}):super(PartyUnintializedState());
 
   @override
   Stream<PartyStates> mapEventToState(PartyEvents event)async* {

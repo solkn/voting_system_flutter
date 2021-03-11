@@ -3,7 +3,7 @@ import 'package:voting_system_flutter/models/model.dart';
 
 abstract class PartyStates{}
 
-class PartyUnintializedStae extends PartyStates{}
+class PartyUnintializedState extends PartyStates{}
 
 class PartyFetchingState extends PartyStates{}
 
