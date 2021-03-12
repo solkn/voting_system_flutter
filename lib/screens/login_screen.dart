@@ -33,10 +33,10 @@ class LoginScreenState extends State<LoginScreen>{
             listener: (context,state){
               if(state is LoginSuccessState){
                 if(state.user.role.name.toUpperCase() == "ADMIN"){
-                  Navigator.of(context).pushReplacementNamed(AdminHomeScreenState.routName);
+                  Navigator.of(context).pushReplacementNamed(AdminHomeScreen.routName);
                 }
                 else if(state.user.role.name .toUpperCase() == "USER"){
-                  Navigator.of(context).pushReplacementNamed(UserHomeScreenState.routName);
+                  Navigator.of(context).pushReplacementNamed(UserHomeScreen.routName);
                 }
               }
             },
