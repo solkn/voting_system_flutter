@@ -13,7 +13,7 @@ class UserRepository{
   Future<User>updateUser(User user)async{
     return await dataProvider.updateUser(user);
   }
-  Future<User>UpdateUserPassword(User user,String oldPassword)async{
+  Future<User>updateUserPassword(User user,String oldPassword)async{
     return await dataProvider.updateUserPassword(user, oldPassword);
   }
   Future<User>login(User user)async{
