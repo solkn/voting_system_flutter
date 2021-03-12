@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:voting_system_flutter/data_provider/data.dart';
 import 'package:voting_system_flutter/models/model.dart';
