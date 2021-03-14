@@ -27,11 +27,11 @@ class AuthBloc extends Bloc<AuthEvents, AuthStates> {
 
   Stream<AuthStates> _mapLoginEventToState(User user) async* {
     yield LoggingState();
-    User u;
+    User usr;
     try {
-      u = await userRepository.login(user);
-      await util.storeUserInformation(u);
-      yield LoginSuccessState(user: u);
+      usr = await userRepository.login(user);
+      await util.storeUserInformation(usr);
+      yield LoginSuccessState(user: usr);
     } on HttpException catch (e) {
       if (e.message == 'Incorrect username or password') {
         yield IncorrectUsernameOrPasswordState();
@@ -47,10 +47,10 @@ class AuthBloc extends Bloc<AuthEvents, AuthStates> {
 
   Stream<AuthStates> _mapSignUpEventToState(User user) async* {
     yield SigningUpState();
-    User u;
+    User usr;
     try {
-      u = await userRepository.signUp(user);
-      yield SignUpSuccessState(user: u);
+      usr = await userRepository.signUp(user);
+      yield SignUpSuccessState(user: usr);
     } on HttpException catch (e) {
       if (e.message == 'Email already exists!') {
         yield EmailAlreadyExistState();

@@ -88,7 +88,7 @@ class ResultDataProvider{
         body: json.encode({
           "id": result.id,
           "ballot": result.ballot,
-          "partyID":result.partyID,
+          "party_id":result.partyID,
         }),
         headers: {
 
@@ -124,7 +124,7 @@ class ResultDataProvider{
         body: json.encode({
           "id": result.id,
           "ballot": result.ballot + 1,
-          "partyID":result.partyID,
+          "party_id":result.partyID,
         }),
         headers: {
 

@@ -32,14 +32,14 @@ class User{
       email: json["email"],
       phone:json["phone"] ,
       password: json["password"],
-      roleID: json["roleID"],
-      role: Role.fromJson(json["role"])
+      roleID: json["role_id"],
+      role: Role.fromJson(json["role_name"])
     );
   }
 
   String toString(){
     return 'User.fullInfo{id:$id,fullName:$fullName,age:$age,email:$email,phone:$phone'
-        'password:$password,roleID:$roleID,role:$role}';
+        'password:$password,role_id:$roleID,role_name:$role}';
   }
 
 }

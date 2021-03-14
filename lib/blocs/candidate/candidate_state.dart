@@ -47,4 +47,4 @@ class CandidateDeletingErrorState extends CandidateStates{
 
 }
 
-class CandidateEmptyState extends CandidateStates{}
+class CandidateFetchingEmptyState extends CandidateStates{}

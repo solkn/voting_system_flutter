@@ -29,7 +29,7 @@ class CandidateBloc extends Bloc<CandidateEvents,CandidateStates>{
     try {
       List<Candidate>candidates = await candidateRepository.getCandidates();
       if (candidates.length == 0) {
-        yield CandidateEmptyState();
+        yield CandidateFetchingEmptyState();
       }
       else {
         yield CandidateFetchedState(candidate: candidates);

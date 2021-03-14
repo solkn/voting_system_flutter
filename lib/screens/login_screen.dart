@@ -2,9 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voting_system_flutter/blocs/auth/auth.dart';
+import 'package:voting_system_flutter/consts.dart';
 import 'package:voting_system_flutter/models/model.dart';
 import 'package:voting_system_flutter/screens/admin_home_screen.dart';
+import 'package:voting_system_flutter/screens/signup_screen.dart';
 import 'package:voting_system_flutter/screens/user_home_screen.dart';
+import 'package:voting_system_flutter/widgets/rounded_button.dart';
 
 class LoginScreen extends StatefulWidget{
   static const String routName ="login_screen";
@@ -48,13 +51,14 @@ class LoginScreenState extends State<LoginScreen>{
                      child: (state is LoggingState)
                          ? SizedBox(
 
-                       child: LinearProgressIndicator(
-                         valueColor:AlwaysStoppedAnimation<Color>(Colors.redAccent),
+                       child: CircularProgressIndicator(
+                         valueColor:AlwaysStoppedAnimation<Color>(Colors.blueAccent),
                        ),
                        height:10.0,
                        width: 50.0,
 
                      )
+
                          : Container(
                          height: 200.0,
                          child: Image.asset('images/logo.png')),
@@ -62,7 +66,8 @@ class LoginScreenState extends State<LoginScreen>{
                      (state is LoginFailedState)
                    ?Container(
                        child:Center(
-                         child: Text("Authentication failed"),
+                         child: Text("Authentication Failed",style: TextStyle(color: Colors.red,fontWeight:
+                         FontWeight.bold,fontStyle: FontStyle.italic),),
                        )
                      )
                   :SizedBox(
@@ -88,7 +93,7 @@ class LoginScreenState extends State<LoginScreen>{
                       email = value;
 
                      },
-                      decoration: InputDecoration(
+                      decoration: kTextFieldDecoration.copyWith(
                         hintText: "enter your email",
                       ),
 
@@ -103,7 +108,7 @@ class LoginScreenState extends State<LoginScreen>{
                        password = value;
 
                      },
-                     decoration: InputDecoration(
+                     decoration: kTextFieldDecoration.copyWith(
                        hintText: "enter your password",
                      ),
 
@@ -111,27 +116,42 @@ class LoginScreenState extends State<LoginScreen>{
                    SizedBox(
                      height: 10.0,
                    ),
-                   RaisedButton(
-                     child: Text("login",style: TextStyle(fontSize: 16.0,color: Colors.blue),),
-                     shape: RoundedRectangleBorder(
-                       borderRadius: BorderRadius.circular(20),
-                     ),
-                     onPressed: (){
+                   RoundedButton(
+                     title: 'Login',
+                     colour: Colors.green,
+                     onPressed: () {
                        final form = _formKey.currentState;
-                       if(!form.validate()){
+                       if (!form.validate()) {
                          return;
                        }
-                       User user = new User(email: email,password: password);
+                       User user =
+                       new User(email: email, password: password);
                        LoginEvent loginEvent = new LoginEvent(user: user);
                        BlocProvider.of<AuthBloc>(context).add(loginEvent);
+                     },
+                   ),
+                   SizedBox(
+                     height: 50.0,
+                     child: Container(
+                       //padding: EdgeInsets.symmetric(horizontal: 100.0),
+                       margin: EdgeInsets.symmetric(horizontal: 60.0),
+                       decoration: BoxDecoration(
+                         color: Colors.yellow,
+                       ),
+                     ),
+                   ),
 
-
-              }
-
+                   RoundedButton(
+                     title: 'SignUp',
+                     colour: Colors.red,
+                     onPressed: () {
+                       Navigator.pushReplacementNamed(context,SignUpScreen.routName);
+                     },
                    ),
                    SizedBox(
                      height: 10.0,
-                   )
+                   ),
+
                  ],
                );
             },

@@ -51,25 +51,29 @@ class UserDataProvider {
     try {
       final response = await http.post(
         url,
-        body: json.encode({
+       // body:json.encode(value{});
+        body: jsonEncode(<String,dynamic>{
           'id': user.id,
-          'email': user.email,
           'full_name': user.fullName,
           "age":user.age,
+          'email': user.email,
           'phone': user.phone,
           'password': user.password,
           'role_id': user.roleID,
         }),
       );
+      print("the status code of logging state is:");
       print(response.statusCode);
       if (response.statusCode == 422) {
         throw HttpException('Invalid Input');
       } else if (response.statusCode == 404) {
         throw HttpException('Incorrect username or password');
       } else {
-        final extractedData = json.decode(response.body) as Map<String, dynamic>;
-        user1 = User.fromJson(extractedData);
-        print(user1.role.name);
+        user1 = User.fromJson(jsonDecode(response.body));
+        //final extractedData = json.decode(response.body)as Map<String,dynamic>;
+       // user1 = User.fromJson(extractedData);
+        print('$user1.fullName');
+        //print(user1.role.name);
         String token = response.headers['token'].toString();
         String expiry = response.headers['expiry_date'].toString();
 
@@ -109,10 +113,10 @@ class UserDataProvider {
                 urlPostUser,
                 body: json.encode({
                   'id': user.id,
-                  'email': user.email,
                   'password': user.password,
                   'full_name': user.fullName,
                   "age":user.age,
+                  'email': user.email,
                   'phone': user.phone,
                   'role_id': user.roleID,
                 }),
@@ -120,11 +124,13 @@ class UserDataProvider {
                   HttpHeaders.contentTypeHeader: "application/json",
                 },
               );
-
+              print("status code is:");
+             print(response.statusCode);
               if (response.statusCode == 200) {
                 final extractedData =
                 json.decode(response.body) as Map<String, dynamic>;
                 user1 = User.fromJson(extractedData);
+                print(user1.fullName);
                 String token = response.headers['Token'].toString();
                 String expiry = response.headers['Expiry_date'].toString();
                 await util.storeUserInformation(user1);
@@ -159,10 +165,10 @@ class UserDataProvider {
         },
         body: json.encode({
           'id': user.id,
-          'email': user.email,
           'password': user.password,
           'full_name': user.fullName,
           "age":user.age,
+          'email': user.email,
           'phone': user.phone,
           'role_id': user.roleID,
         }),
@@ -196,10 +202,10 @@ class UserDataProvider {
         },
         body: json.encode({
           'id': user.id,
-          'email': user.email,
           'password': oldPassword,
           'full_name': user.fullName,
           "age":user.age,
+          'email': user.email,
           'phone': user.phone,
           'role_id': user.roleID,
         }),
@@ -214,10 +220,10 @@ class UserDataProvider {
           },
           body: json.encode({
             'id': user.id,
-            'email': user.email,
             'password': user.password,
             'full_name': user.fullName,
             "age":user.age,
+            'email': user.email,
             'phone': user.phone,
             'role_id': user.roleID,
           }),

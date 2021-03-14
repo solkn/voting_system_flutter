@@ -7,8 +7,8 @@ class AdminCandidateDetailScreen extends StatelessWidget{
   AdminCandidateDetailScreen({@required this.candidateRoutArgsForDetail});
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+
+
   }
 
 }

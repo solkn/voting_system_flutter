@@ -15,8 +15,8 @@ class Candidate{
     return Candidate(
          id: json["id"],
          name: json["name"],
-         partyID: json["partyID"],
-         party: Party.fromJson(json["party"]),
+         partyID: json["party_id"],
+         party: Party.fromJson(json["party_name"]),
 
 
     );

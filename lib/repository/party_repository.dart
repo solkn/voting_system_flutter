@@ -3,26 +3,26 @@ import 'package:voting_system_flutter/data_provider/data.dart';
 import 'package:voting_system_flutter/models/model.dart';
 
 class PartyRepository{
-  final PartyDataProvider dataProvider;
+  final PartyDataProvider partyDataProvider;
 
-  PartyRepository({@required this.dataProvider});
+  PartyRepository({@required this.partyDataProvider});
 
   Future<List<Party>>getParties()async{
 
-    return await dataProvider.getParties();
+    return await partyDataProvider.getParties();
 
   }
   Future<Party>getParty(String id)async{
-    return await dataProvider.getParty(id);
+    return await partyDataProvider.getParty(id);
   }
   Future<Party>postParty(Party party)async{
-    return await dataProvider.postParty(party);
+    return await partyDataProvider.postParty(party);
 
   }
   Future<Party>putParty(Party party)async{
-    return await dataProvider.postParty(party);
+    return await partyDataProvider.postParty(party);
   }
   Future<void>deleteParty(String id)async{
-    return await dataProvider.deleteParty(id);
+    return await partyDataProvider.deleteParty(id);
   }
 }

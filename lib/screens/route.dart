@@ -71,9 +71,14 @@ class AppRoutes{
         case LoginScreen.routName:
               return MaterialPageRoute(builder: (context) => LoginScreen());
               break;
+        case SignUpScreen.routName:
+          return MaterialPageRoute(builder: (context)=>SignUpScreen());
+          break;
         case AdminHomeScreen.routName:
           return MaterialPageRoute(builder: (context)=>AdminHomeScreen());
           break;
+        case UserHomeScreen.routName:
+          return MaterialPageRoute(builder: (context)=>UserHomeScreen());
         case CandidateAddUpdate.routName:
              final CandidateRoutArgs candidateRoutArgs = settings.arguments;
              return MaterialPageRoute(builder: (context)=>CandidateAddUpdate(candidateRoutArgs: candidateRoutArgs));
@@ -84,10 +89,6 @@ class AppRoutes{
         case RoleAddUpdateScreen.routName:
           return MaterialPageRoute(builder: (context)=>RoleAddUpdateScreen());
           break;
-
-        case SignUpScreen.routName:
-             return MaterialPageRoute(builder: (context)=>SignUpScreen());
-             break;
         case AdminCandidateDetailScreen.routName:
              final CandidateRoutArgsForDetail candidateRoutArgsForDetail = settings.arguments;
              return MaterialPageRoute(builder: (context)=>AdminCandidateDetailScreen(candidateRoutArgsForDetail: candidateRoutArgsForDetail));

@@ -14,13 +14,13 @@ class Result{
     return Result(
         id: json["id"],
         ballot: json["ballot"],
-        partyID: json["partyID"],
-        party: Party.fromJson(json["party"]),
+        partyID: json["party_id"],
+        party: Party.fromJson(json["party_name"]),
     );
 
   }
 
   String toString(){
-    return 'Result{id:$id,ballot:$ballot,partyID:$partyID,bloc.party:$party}';
+    return 'Result{id:$id,ballot:$ballot,party_id:$partyID,bloc.party_name:$party}';
   }
 }

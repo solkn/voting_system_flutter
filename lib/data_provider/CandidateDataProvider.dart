@@ -80,7 +80,7 @@ class CandidateDataProvider {
         body: json.encode({
           "id": candidate.id,
           "name": candidate.name,
-          "partyID": candidate.partyID,
+          "party_id": candidate.partyID,
         }),
 
         headers: {
@@ -116,7 +116,7 @@ class CandidateDataProvider {
         body: json.encode({
           "id": candidate.id,
           "name": candidate.name,
-          "partyID": candidate.partyID,
+          "party_id": candidate.partyID,
         }),
         headers: {
 
