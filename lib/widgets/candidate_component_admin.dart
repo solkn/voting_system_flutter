@@ -62,8 +62,7 @@ class CandidateComponentAdmin extends StatelessWidget{
                                   backgroundColor: Colors.amberAccent,
                                   radius: 25,
                                   child: Text(
-                                    //fixture.clubs[0].name[0].toUpperCase(),
-                                    candidate.party.name[0].toUpperCase(),
+                                    candidate.party.name.toUpperCase(),
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 30.0,

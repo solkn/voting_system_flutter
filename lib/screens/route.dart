@@ -10,6 +10,7 @@ import 'package:voting_system_flutter/screens/admin_add_candidate_screen.dart';
 import 'package:voting_system_flutter/screens/admin_add_party_screen.dart';
 import 'package:voting_system_flutter/screens/admin_add_role_screen.dart';
 import 'package:voting_system_flutter/screens/admin_candidate_detail_screen.dart';
+import 'package:voting_system_flutter/screens/admin_candidate_screen.dart';
 import 'package:voting_system_flutter/screens/admin_home_screen.dart';
 import 'package:voting_system_flutter/screens/admin_result_detail_screen.dart';
 import 'package:voting_system_flutter/screens/home.dart';
@@ -81,7 +82,8 @@ class AppRoutes{
           return MaterialPageRoute(builder: (context)=>UserHomeScreen());
         case CandidateAddUpdate.routName:
              final CandidateRoutArgs candidateRoutArgs = settings.arguments;
-             return MaterialPageRoute(builder: (context)=>CandidateAddUpdate(candidateRoutArgs: candidateRoutArgs));
+             return MaterialPageRoute(builder: (context)=>CandidateAddUpdate(
+                 candidateRoutArgs: candidateRoutArgs));
              break;
         case PartyAddUpdateScreen.routName:
           return MaterialPageRoute(builder: (context)=>PartyAddUpdateScreen());
@@ -91,21 +93,25 @@ class AppRoutes{
           break;
         case AdminCandidateDetailScreen.routName:
              final CandidateRoutArgsForDetail candidateRoutArgsForDetail = settings.arguments;
-             return MaterialPageRoute(builder: (context)=>AdminCandidateDetailScreen(candidateRoutArgsForDetail: candidateRoutArgsForDetail));
+             return MaterialPageRoute(builder: (context)=>AdminCandidateDetailScreen(
+                 candidateRoutArgsForDetail: candidateRoutArgsForDetail));
              break;
         case AdminCandidateDetailScreen.routName:
           final ResultRoutArgsForDetail resultRoutArgsForDetail = settings.arguments;
-          return MaterialPageRoute(builder: (context)=>AdminResultDetailScreen(resultRoutArgsForDetail: resultRoutArgsForDetail));
+          return MaterialPageRoute(builder: (context)=>AdminResultDetailScreen(
+              resultRoutArdsForDetail: resultRoutArgsForDetail));
           break;
 
         case UserCandidateDetailScreen.routName:
           final CandidateRoutArgsForDetail candidateRoutArgsForDetail = settings.arguments;
-          return MaterialPageRoute(builder: (context)=>UserCandidateDetailScreen(candidateRoutArgsForDetail: candidateRoutArgsForDetail));
+          return MaterialPageRoute(builder: (context)=>UserCandidateDetailScreen(
+              candidateRoutArgsForDetail: candidateRoutArgsForDetail));
           break;
 
         case UserResultDetailScreen.routName:
           final ResultRoutArgsForDetail resultRoutArgsForDetail = settings.arguments;
-          return MaterialPageRoute(builder: (context)=>UserResultDetailScreen(resultRoutArgsForDetail: resultRoutArgsForDetail));
+          return MaterialPageRoute(builder: (context)=>UserResultDetailScreen(
+              resultRoutArgsForDetail: resultRoutArgsForDetail));
           break;
       }
 

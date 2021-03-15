@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:voting_system_flutter/screens/admin_add_candidate_screen.dart';
 import 'package:voting_system_flutter/screens/admin_candidate_screen.dart';
+import 'package:voting_system_flutter/screens/admin_result_screen.dart';
 import 'package:voting_system_flutter/widgets/app_drawer_admin.dart';
+import 'package:voting_system_flutter/widgets/candidate_component_admin.dart';
 
 import 'route.dart';
 
@@ -60,14 +62,15 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
           ],
         ),
       ),
-      drawer: AppDrawer(),
+      drawer: AppDrawerAdmin(),
       body: TabBarView(controller: controller, children: <Widget>[
         AdminCandidateScreen(
           scaffoldKey: scaffoldKey,
         ),
-        AdminCandidateScreen(
+        AdminResultScreen(
           scaffoldKey: scaffoldKey,
         )
+
       ]),
     );
   }

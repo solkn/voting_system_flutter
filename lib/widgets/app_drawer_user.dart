@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voting_system_flutter/blocs/auth/auth.dart';
 import 'package:voting_system_flutter/blocs/user/user_bloc.dart';
 
-class AppDrawerAdmin extends StatelessWidget {
+class AppDrawerUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -32,26 +32,6 @@ class AppDrawerAdmin extends StatelessWidget {
               title: Text('Home'),
               onTap: () {
                 Navigator.of(context).pushReplacementNamed('/');
-              },
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.payment),
-              title: Text('Role'),
-              onTap: () {
-                // Navigator.of(context).pop();
-                // Navigator.of(context).pushNamed(AdminRoleScreen.routeName);
-              },
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.payment),
-              title: Text('Users'),
-              onTap: () {
-                // Navigator.of(context).pop();
-                // BlocProvider.of<UserBloc>(context).add(GetUsersEvent());
-                // Navigator.of(context)
-                //     .pushReplacementNamed(AdminUsersScreen.routeName);
               },
             ),
             Divider(),

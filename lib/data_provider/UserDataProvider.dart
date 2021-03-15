@@ -70,10 +70,7 @@ class UserDataProvider {
         throw HttpException('Incorrect username or password');
       } else {
         user1 = User.fromJson(jsonDecode(response.body));
-        //final extractedData = json.decode(response.body)as Map<String,dynamic>;
-       // user1 = User.fromJson(extractedData);
-        print('$user1.fullName');
-        //print(user1.role.name);
+        //print('$user1.fullName');
         String token = response.headers['token'].toString();
         String expiry = response.headers['expiry_date'].toString();
 

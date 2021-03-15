@@ -11,8 +11,19 @@ class ResultBloc extends Bloc<ResultEvents,ResultStates>{
   ResultBloc({@required this.resultRepository}) : super(ResultUninitializedState());
 
   @override
-  Stream<ResultStates> mapEventToState(ResultEvents event) {
-    throw UnimplementedError();
+  Stream<ResultStates> mapEventToState(ResultEvents event)async* {
+   if(event is GetResultEvent){
+     yield* _mapGetResultEventToState();
+   }
+   if(event is PostResultEvent){
+     yield* _mapPostResultEventToState(event.result);
+   }
+   if(event is UpdateResultEvent){
+     yield* _mapUpdateResultEventToState(event.result);
+   }
+   if(event is DeleteResultEvent){
+     yield* _mapDeleteResultEventToState(event.id);
+   }
   }
 
   Stream<ResultStates>_mapGetResultEventToState()async*{

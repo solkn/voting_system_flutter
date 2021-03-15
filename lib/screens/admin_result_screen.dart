@@ -5,6 +5,7 @@ import 'package:voting_system_flutter/blocs/candidate/candidate.dart';
 import 'package:voting_system_flutter/blocs/result/result.dart';
 import 'package:voting_system_flutter/screens/splash_screen.dart';
 import 'package:voting_system_flutter/widgets/candidate_component_admin.dart';
+import 'package:voting_system_flutter/widgets/result_component_admin.dart';
 
 class AdminResultScreen extends StatelessWidget{
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -22,12 +23,12 @@ class AdminResultScreen extends StatelessWidget{
             return SplashScreen(title: "fetching results");
           }
           else if(state is ResultFetchedState){
-            final candidates = state.result;
+            final results = state.result;
 
             return ListView.builder(
                 padding: EdgeInsets.all(8.0),
-                itemCount: candidates.length,
-                itemBuilder: null);//(_,idx)=>ResultComponentAdmin(candidate: candidates[idx]));
+                itemCount: results.length,
+                itemBuilder: (_,idx)=>ResultComponentAdmin(result: results[idx]));
 
 
           }else if(state is ResultFetchingErrorState){
