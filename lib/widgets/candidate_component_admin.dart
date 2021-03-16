@@ -59,13 +59,14 @@ class CandidateComponentAdmin extends StatelessWidget{
                             Column(
                               children: [
                                 CircleAvatar(
-                                  backgroundColor: Colors.amberAccent,
-                                  radius: 25,
+                                  backgroundColor: Colors.purpleAccent,
+                                  radius: 35,
                                   child: Text(
                                     candidate.party.name.toUpperCase(),
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 30.0,
+                                      fontSize: 16.0,
+                                      fontStyle: FontStyle.italic,
                                     ),
                                   ),
                                 ),
@@ -73,7 +74,12 @@ class CandidateComponentAdmin extends StatelessWidget{
                                   height: 5,
                                 ),
                                 Container(
-                                  child: Text(candidate.party.name),
+                                  child: Text(candidate.name,
+                                  style: TextStyle(
+                                    color: Colors.purpleAccent,
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: 15,
+                                  ),),
                                 )
                               ],
                             ),

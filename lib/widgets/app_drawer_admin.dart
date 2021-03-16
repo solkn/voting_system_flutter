@@ -21,7 +21,7 @@ class AppDrawerAdmin extends StatelessWidget {
               child: CircleAvatar(
                 radius: 50.0,
                 child: Image.asset(
-                  "images/person.png",
+                  "images/sol.jpg",
                   fit: BoxFit.cover,
                 ),
               ),

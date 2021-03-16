@@ -13,7 +13,7 @@ class PartyDataProvider{
 
   Future<List<Party>>getParties()async{
 
-    final url = "http://192.168.56.1:8080/v1/parties";
+    final url = "http://192.168.56.1:8080/v1/party";
     List<Party>parties;
 
 
@@ -46,16 +46,16 @@ class PartyDataProvider{
   }
 
   Future<Party>getParty(String id) async{
-    final url = "http://192.168.56.1:8080/v1/bloc.party";
+    final url = "http://192.168.56.1:8080/v1/party/$id";
     Party party;
 
     try{
          final response = await httpClient.get(url);
          if(response.statusCode == 500){
-            throw HttpException("error occured");
+            throw HttpException("error occurred");
          }
          else if(response.statusCode == 404){
-           throw HttpException("error occured");
+           throw HttpException("error occurred");
          }
          else{
            final extractedData = json.decode(response.body) as Map<String,dynamic>;
@@ -73,7 +73,7 @@ class PartyDataProvider{
   }
 
   Future<Party>postParty(Party party)async{
-    final url = "http://192.168.56.1:8080/v1/bloc.party";
+    final url = "http://192.168.56.1:8080/v1/party";
     Party pt;
 
     try{
@@ -90,7 +90,7 @@ class PartyDataProvider{
           pt = Party.fromJson(extractedData);
        }
        else{
-         throw HttpException("error occured");
+         throw HttpException("error occurred");
        }
     }
     catch(e){
@@ -101,7 +101,7 @@ class PartyDataProvider{
 
   Future<Party>putParty(Party party)async{
 
-    final url = "http://192.168.56.2:8080/v1/bloc.party/${party.id}";
+    final url = "http://192.168.56.2:8080/v1/party/${party.id}";
     Party pt;
 
     try{
@@ -119,7 +119,7 @@ class PartyDataProvider{
          pt = Party.fromJson(extractedData);
        }
        else{
-         throw HttpException("error occured");
+         throw HttpException("error occurred");
        }
     }catch(e){
       throw e;
@@ -130,13 +130,13 @@ class PartyDataProvider{
 
   Future<void>deleteParty(String id)async{
 
-    final url = "http://198.168.56.1:8080/v1/bloc.party/$id";
+    final url = "http://198.168.56.1:8080/v1/party/$id";
 
     try{
 
       final response = await httpClient.delete(url);
        if(response.statusCode != 200){
-         throw HttpException("error occured");
+         throw HttpException("error occurred");
        }
     }catch(e){
       throw e;

@@ -30,7 +30,7 @@ class AdminCandidateScreen extends StatelessWidget{
         if (state is CandidateDeletingErrorState) {
           scaffoldKey.currentState.removeCurrentSnackBar();
           scaffoldKey.currentState.showSnackBar(SnackBar(
-              content: Text('Fixture Deleted'),
+              content: Text('Candidate Deleted'),
               duration: Duration(
                 seconds: 5,
               )));
@@ -44,19 +44,18 @@ class AdminCandidateScreen extends StatelessWidget{
             return SplashScreen(title: "fetching candidates");
           }
           else if(state is CandidateFetchedState){
-          final candidates = state.candidate;
+          final candidates = state.candidates;
           return ListView.builder(
               padding: EdgeInsets.all(8.0),
               itemCount: candidates.length,
               itemBuilder: (_,idx)=>CandidateComponentAdmin(candidate: candidates[idx]));
 
-          //  return c;
 
           }else if(state is CandidateFetchingEmptyState){
             return SplashScreen(title: "no candidate added!");
 
           }else if(state is CandidateFetchingErrorState){
-            return SplashScreen(title: "error occurred!");
+            return SplashScreen(title: "error occurred while fetching!");
           }else{
             return SplashScreen(title: "failed to load candidate!");
           }

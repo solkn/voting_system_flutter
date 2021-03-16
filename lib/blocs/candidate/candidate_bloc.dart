@@ -27,12 +27,13 @@ class CandidateBloc extends Bloc<CandidateEvents,CandidateStates>{
   Stream<CandidateStates>_mapGetCandidateEventToState()async*{
     yield CandidateFetchingState();
     try {
-      List<Candidate>candidates = await candidateRepository.getCandidates();
+      List<Candidate>candidates;
+      candidates= await candidateRepository.getCandidates();
       if (candidates.length == 0) {
         yield CandidateFetchingEmptyState();
       }
       else {
-        yield CandidateFetchedState(candidate: candidates);
+        yield CandidateFetchedState(candidates: candidates);
       }
     }on HttpException catch(e){
       yield CandidateFetchingErrorState(message:e.message );
@@ -46,7 +47,7 @@ class CandidateBloc extends Bloc<CandidateEvents,CandidateStates>{
     yield CandidatePostingState();
     try{
       await candidateRepository.postCandidate(candidate);
-      yield CandidateFetchedState();
+      yield CandidatePostedState();
     }on HttpException catch(e){
       yield CandidatePostingErrorState(message: e.message);
     }
@@ -55,15 +56,15 @@ class CandidateBloc extends Bloc<CandidateEvents,CandidateStates>{
     }
   }
   Stream<CandidateStates>_mapUpdateCandidateEventToState(Candidate candidate)async*{
-    yield CandidateFetchingState();
+    yield CandidateUpdatingState();
     try{
       await candidateRepository.putCandidate(candidate);
-      yield CandidateFetchedState();
+      yield CandidateUpdatedState();
     }on HttpException catch(e){
-      yield CandidateFetchingErrorState(message: e.message);
+      yield CandidateUpdatingErrorState(message: e.message);
     }
     catch(e){
-      yield CandidateFetchingErrorState();
+      yield CandidateUpdatingErrorState();
     }
   }
   Stream<CandidateStates>_mapDeleteCandidateEventToState(String id)async*{

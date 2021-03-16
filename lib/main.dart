@@ -24,9 +24,9 @@ void main(){
        userDataProvider: UserDataProvider(httpClient: http.Client()));
   RoleRepository roleRepository = RoleRepository(
        roleDataProvider: RoleDataProvider(httpClient:http.Client() ));
-  CandidateRepository candidateRepository =CandidateRepository(
+  CandidateRepository candidateRepository = CandidateRepository(
       candidateDataProvider:CandidateDataProvider(httpClient: http.Client()));
-  ResultRepository resultRepository =ResultRepository(
+  ResultRepository resultRepository = ResultRepository(
       resultDataProvider: ResultDataProvider(httpClient: http.Client()));
 
 

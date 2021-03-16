@@ -45,7 +45,7 @@ class UserCandidateScreen extends StatelessWidget{
             return SplashScreen(title: "fetching candidates");
           }
           else if(state is CandidateFetchedState){
-            final candidates = state.candidate;
+            final candidates = state.candidates;
             return ListView.builder(
                 padding: EdgeInsets.all(8.0),
                 itemCount: candidates.length,

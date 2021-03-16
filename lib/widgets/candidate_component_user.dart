@@ -61,12 +61,12 @@ class CandidateComponentUser extends StatelessWidget{
                               children: [
                                 CircleAvatar(
                                   backgroundColor: Colors.amberAccent,
-                                  radius: 25,
+                                  radius: 35,
                                   child: Text(
                                     candidate.party.name.toUpperCase(),
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 30.0,
+                                      fontSize: 16.0,
                                     ),
                                   ),
                                 ),
@@ -74,7 +74,12 @@ class CandidateComponentUser extends StatelessWidget{
                                   height: 5,
                                 ),
                                 Container(
-                                  child: Text(candidate.party.name),
+                                  child: Text(candidate.name,
+                                    style: TextStyle(
+                                      color: Colors.purpleAccent,
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 15,),
+                                  ),
                                 )
                               ],
                             ),
@@ -154,3 +159,8 @@ class CandidateComponentUser extends StatelessWidget{
   }
 
 }
+
+
+
+
+

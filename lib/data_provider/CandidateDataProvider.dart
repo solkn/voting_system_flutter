@@ -17,24 +17,29 @@ class CandidateDataProvider {
 
   Future<List<Candidate>> getCandidates() async {
     List<Candidate>candidates;
-    final url = "https://192.168.56.1:8080/v1/candidates";
+    final url = "http://192.168.56.1:8080/v1/candidate";
+    print("getting candidate");
 
     try {
       final response = await httpClient.get(url);
+      print("status code for getting candidates");
+      print(response.statusCode);
       if (response.statusCode == 200) {
         final extractedData = json.decode(response.body) as List<dynamic>;
+        //final ex = jsonDecode(response.body)as List<dynamic>;
 
         if (extractedData == null) {
           return null;
         }
         else {
-          candidates =
-              extractedData.map<Candidate>((json) => Candidate.fromJson(json))
-                  .toList();
+          candidates = extractedData.map<Candidate>((json) => Candidate.fromJson(json)).toList();
+          //candidates = ex.map<Candidate>((json)=>Candidate.fromJson(json)).toList();
+
         }
       }
       else {
-        throw HttpException("error occured");
+        throw HttpException("error occurred");
+
       }
     } catch (e) {
       throw e;
@@ -43,7 +48,7 @@ class CandidateDataProvider {
   }
 
   Future<Candidate> getCandidate(String id) async {
-    final url = "https://192.168.56.1:8080/v1/candidates/$id";
+    final url = "https://192.168.56.1:8080/v1/candidate/$id";
     Candidate cndt;
 
     try {
@@ -105,7 +110,7 @@ class CandidateDataProvider {
   }
 
   Future<Candidate> putCandidate(Candidate candidate) async {
-    final url = "http://192.168.56.2:8080/v1/bloc.party/${candidate.id}";
+    final url = "http://192.168.56.2:8080/v1/candidate/${candidate.id}";
     Candidate cndt;
     Util util = new Util();
     String token = await util.getUserToken();
@@ -131,7 +136,7 @@ class CandidateDataProvider {
         cndt = Candidate.fromJson(extractedData);
       }
       else {
-        throw HttpException("error occured");
+        throw HttpException("error occurred");
       }
     } catch (e) {
       throw e;
@@ -143,9 +148,9 @@ class CandidateDataProvider {
     final url = "http://198.168.56.1:8080/v1/candidate/$id";
 
     try {
-      final response = await http.delete(url);
+      final response = await httpClient.delete(url);
       if (response.statusCode != 200) {
-        throw HttpException("error occured");
+        throw HttpException("error occurred");
       }
     } catch (e) {
       throw e;

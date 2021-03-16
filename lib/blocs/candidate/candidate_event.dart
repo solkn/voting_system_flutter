@@ -26,7 +26,7 @@ class UpdateCandidateEvent extends CandidateEvents{
 
 }
 class DeleteCandidateEvent extends CandidateEvents{
-  String id;
+  final String id;
   DeleteCandidateEvent({@required this.id});
 
   @override

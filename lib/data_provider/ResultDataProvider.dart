@@ -16,7 +16,7 @@ class ResultDataProvider{
 
   Future<List<Result>>getResults()async{
 
-    final url = "http://192.168.56.1:8080/v1/results";
+    final url = "http://192.168.56.1:8080/v1/result";
     List<Result>results;
 
 
@@ -49,16 +49,16 @@ class ResultDataProvider{
   }
 
   Future<Result>getResult(String id) async{
-    final url = "http://192.168.56.1:8080/v1/result";
+    final url = "http://192.168.56.1:8080/v1/result/$id";
     Result result;
 
     try{
       final response = await httpClient.get(url);
       if(response.statusCode == 500){
-        throw HttpException("error occured");
+        throw HttpException("error occurred");
       }
       else if(response.statusCode == 404){
-        throw HttpException("error occured");
+        throw HttpException("error occurred");
       }
       else{
         final extractedData = json.decode(response.body) as Map<String,dynamic>;
@@ -101,7 +101,7 @@ class ResultDataProvider{
         rslt = Result.fromJson(extractedData);
       }
       else{
-        throw HttpException("error occured");
+        throw HttpException("error occurred");
       }
     }
     catch(e){
@@ -112,7 +112,7 @@ class ResultDataProvider{
 
   Future<Result>putResult(Result result)async{
 
-    final url = "http://192.168.56.2:8080/v1/bloc.party/${result.id}";
+    final url = "http://192.168.56.2:8080/v1/result/${result.id}";
     Result rslt;
     Util util = new Util();
     String token = await util.getUserToken();
@@ -138,7 +138,7 @@ class ResultDataProvider{
         rslt = Result.fromJson(extractedData);
       }
       else{
-        throw HttpException("error occured");
+        throw HttpException("error occurred");
       }
     }catch(e){
       throw e;
@@ -149,13 +149,13 @@ class ResultDataProvider{
 
   Future<void>deleteResult(String id)async{
 
-    final url = "http://198.168.56.1:8080/v1/bloc.party/$id";
+    final url = "http://198.168.56.1:8080/v1/result/$id";
 
     try{
 
       final response = await httpClient.delete(url);
       if(response.statusCode != 200){
-        throw HttpException("error occured");
+        throw HttpException("error occurred");
       }
     }catch(e){
       throw e;

@@ -69,6 +69,7 @@ class AppRoutes{
                   }));
         case HomeScreen.routName:
                return MaterialPageRoute(builder: (context)=>HomeScreen());
+               break;
         case LoginScreen.routName:
               return MaterialPageRoute(builder: (context) => LoginScreen());
               break;
@@ -80,10 +81,11 @@ class AppRoutes{
           break;
         case UserHomeScreen.routName:
           return MaterialPageRoute(builder: (context)=>UserHomeScreen());
+          break;
         case CandidateAddUpdate.routName:
              final CandidateRoutArgs candidateRoutArgs = settings.arguments;
              return MaterialPageRoute(builder: (context)=>CandidateAddUpdate(
-                 candidateRoutArgs: candidateRoutArgs));
+                 candidateArgs: candidateRoutArgs));
              break;
         case PartyAddUpdateScreen.routName:
           return MaterialPageRoute(builder: (context)=>PartyAddUpdateScreen());

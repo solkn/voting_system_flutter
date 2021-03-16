@@ -8,9 +8,9 @@ class CandidateUnintializedState extends CandidateStates{}
 class CandidateFetchingState extends CandidateStates{}
 
 class CandidateFetchedState extends CandidateStates{
-  final List<Candidate> candidate;
+  final List<Candidate> candidates;
 
-  CandidateFetchedState({this.candidate});
+  CandidateFetchedState({this.candidates});
 }
 class CandidateFetchingErrorState extends CandidateStates{
   final String message;
