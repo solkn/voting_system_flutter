@@ -13,7 +13,6 @@ import 'package:voting_system_flutter/screens/admin_candidate_detail_screen.dart
 import 'package:voting_system_flutter/screens/admin_candidate_screen.dart';
 import 'package:voting_system_flutter/screens/admin_home_screen.dart';
 import 'package:voting_system_flutter/screens/admin_result_detail_screen.dart';
-import 'package:voting_system_flutter/screens/home.dart';
 import 'package:voting_system_flutter/screens/login_screen.dart';
 import 'package:voting_system_flutter/screens/signup_screen.dart';
 import 'package:voting_system_flutter/screens/splash_screen.dart';
@@ -27,9 +26,9 @@ bool isAdmin =false;
 class AppRoutes{
   static Route generateRoute(RouteSettings settings){
 
-    final routs = settings.name;
+    final routes = settings.name;
 
-      switch (routs) {
+      switch (routes) {
 
         case "/":
           return MaterialPageRoute(
@@ -67,9 +66,7 @@ class AppRoutes{
                         ? (isAdmin ? AdminHomeScreen() : UserHomeScreen())
                         : LoginScreen();
                   }));
-        case HomeScreen.routName:
-               return MaterialPageRoute(builder: (context)=>HomeScreen());
-               break;
+
         case LoginScreen.routName:
               return MaterialPageRoute(builder: (context) => LoginScreen());
               break;
@@ -115,6 +112,8 @@ class AppRoutes{
           return MaterialPageRoute(builder: (context)=>UserResultDetailScreen(
               resultRoutArgsForDetail: resultRoutArgsForDetail));
           break;
+        default:
+          return null;
       }
 
   }

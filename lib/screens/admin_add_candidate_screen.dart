@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voting_system_flutter/blocs/candidate/candidate.dart';
 import 'package:voting_system_flutter/blocs/party/party.dart';
 import 'package:voting_system_flutter/models/model.dart';
+import 'package:voting_system_flutter/screens/admin_home_screen.dart';
 import 'package:voting_system_flutter/screens/route.dart';
 
 
@@ -21,6 +22,7 @@ class CandidateAddUpdate extends StatefulWidget {
 }
 
 class CandidateAddUpdateState extends State<CandidateAddUpdate> {
+
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   final _formKey = GlobalKey<FormState>();
@@ -58,7 +60,6 @@ class CandidateAddUpdateState extends State<CandidateAddUpdate> {
         id: widget.candidateArgs.candidate.id,
         name: candidateName,
         partyID: widget.candidateArgs.candidate.partyID,
-        party: widget.candidateArgs.candidate.party,
 
       );
 
@@ -68,7 +69,6 @@ class CandidateAddUpdateState extends State<CandidateAddUpdate> {
       candidate = Candidate(
         name: candidateName,
         partyID: widget.candidateArgs.candidate.partyID,
-        party: widget.candidateArgs.candidate.party,
       );
       BlocProvider.of<CandidateBloc>(context, listen: false)
         ..add(PostCandidateEvent(candidate: candidate));
@@ -77,7 +77,7 @@ class CandidateAddUpdateState extends State<CandidateAddUpdate> {
 
 
 
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
@@ -92,7 +92,8 @@ class CandidateAddUpdateState extends State<CandidateAddUpdate> {
                 Icons.save,
                 color: Colors.white,
               ),
-              onPressed: _saveForm)
+              onPressed: _saveForm
+          )
         ],
       ),
       body: BlocConsumer<CandidateBloc, CandidateStates>(
@@ -107,6 +108,7 @@ class CandidateAddUpdateState extends State<CandidateAddUpdate> {
           if (state is CandidateUpdatingErrorState) {
             _scaffoldKey.currentState.showSnackBar(
                 SnackBar(content: Text('Error Updating the candidate')));
+
           }
           if ((state is CandidatePostedState) || (state is CandidateUpdatedState)) {
             BlocProvider.of<PartyBloc>(context).add(GetPartyEvent());
@@ -149,8 +151,6 @@ class CandidateAddUpdateState extends State<CandidateAddUpdate> {
                           hintText: 'Enter Name'),
                     ),
                   ),
-
-
                 ],
               ),
             ),

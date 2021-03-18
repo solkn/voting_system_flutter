@@ -125,8 +125,7 @@ class CandidateComponentAdmin extends StatelessWidget{
                       InkWell(
                         onTap: () {
                           BlocProvider.of<CandidateBloc>(context).add(
-                              DeleteCandidateEvent(
-                                  id: candidate.id.toString()));
+                              DeleteCandidateEvent(id: candidate.id.toString()));
                         },
                         child: Column(
                           children: [

@@ -13,13 +13,13 @@ class AdminResultScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer(
+    return BlocConsumer<ResultBloc,ResultStates>(
         listener: (context,state){
 
         },
 
         builder: (context,state) {
-          if (state is ResultFetchedState) {
+          if (state is ResultFetchingState) {
             return SplashScreen(title: "fetching results");
           }
           else if(state is ResultFetchedState){
@@ -30,10 +30,10 @@ class AdminResultScreen extends StatelessWidget{
                 itemCount: results.length,
                 itemBuilder: (_,idx)=>ResultComponentAdmin(result: results[idx]));
 
-
+          }else if(state is ResultEmptyState){
+            return SplashScreen(title: "no result is added");
           }else if(state is ResultFetchingErrorState){
-            return SplashScreen(title: "no result added");
-
+            return SplashScreen(title: "error to fetch result");
           }else{
             return SplashScreen(title: "failed to load result");
           }

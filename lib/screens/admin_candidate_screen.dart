@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voting_system_flutter/blocs/candidate/candidate.dart';
+import 'package:voting_system_flutter/screens/admin_home_screen.dart';
 import 'package:voting_system_flutter/screens/splash_screen.dart';
 import 'package:voting_system_flutter/widgets/candidate_component_admin.dart';
 
@@ -14,7 +15,6 @@ class AdminCandidateScreen extends StatelessWidget{
       return BlocConsumer<CandidateBloc,CandidateStates>(
         listener: (context,state){
         if (state is CandidateDeletingState) {
-          scaffoldKey.currentState.removeCurrentSnackBar();
           scaffoldKey.currentState.showSnackBar(SnackBar(
             content: Text('Deleting candidate.....'),
           ));
@@ -30,7 +30,7 @@ class AdminCandidateScreen extends StatelessWidget{
         if (state is CandidateDeletingErrorState) {
           scaffoldKey.currentState.removeCurrentSnackBar();
           scaffoldKey.currentState.showSnackBar(SnackBar(
-              content: Text('Candidate Deleted'),
+              content: Text('Candidate Deleting Error'),
               duration: Duration(
                 seconds: 5,
               )));
@@ -56,7 +56,7 @@ class AdminCandidateScreen extends StatelessWidget{
 
           }else if(state is CandidateFetchingErrorState){
             return SplashScreen(title: "error occurred while fetching!");
-          }else{
+          } else{
             return SplashScreen(title: "failed to load candidate!");
           }
         }

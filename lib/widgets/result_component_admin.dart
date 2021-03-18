@@ -57,12 +57,12 @@ class ResultComponentAdmin extends StatelessWidget{
                               children: [
                                 CircleAvatar(
                                   backgroundColor: Colors.amberAccent,
-                                  radius: 25,
+                                  radius: 35,
                                   child: Text(
                                     result.party.name,
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 30.0,
+                                      fontSize: 16.0,
                                     ),
                                   ),
                                 ),
@@ -70,8 +70,16 @@ class ResultComponentAdmin extends StatelessWidget{
                                   height: 5,
                                 ),
                                 Container(
-                                  child: Text(result.ballot.toString()),
-                                )
+                                  child: Row(
+                                     children: <Widget>[
+                                       Text("number of Votes: ",
+                                       style: TextStyle(
+                                         color: Colors.blueAccent,fontStyle: FontStyle.italic
+                                       ),),
+                                       Text(result.ballot.toString()),
+                                     ],
+                                ),
+                                ),
                               ],
                             ),
 

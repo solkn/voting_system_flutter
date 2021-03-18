@@ -47,7 +47,7 @@ class _UserHomeScreenState extends State<UserHomeScreen>
           controller: controller,
           tabs: [
             Tab(
-              text: "Candidates",
+              text: "Candidate",
             ),
             Tab(
               text: "Result",

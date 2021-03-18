@@ -18,17 +18,32 @@ class AppDrawerAdmin extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: CircleAvatar(
-                radius: 50.0,
-                child: Image.asset(
-                  "images/sol.jpg",
-                  fit: BoxFit.cover,
-                ),
+
+              child:Column(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.all(20),
+                        width: 200,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: AssetImage("images/sol.jpg"),
+                              fit: BoxFit.fill
+                          ),
+
+                        ),
+                      ),
+                      Text("Solomon Kindie",
+                        style: TextStyle(
+                          color: Colors.purpleAccent,fontSize: 25,fontStyle: FontStyle.italic),
+                      ),
+                    ],
               ),
-            ),
+               ),
             Divider(),
             ListTile(
-              leading: Icon(Icons.sports_soccer),
+              leading: Icon(Icons.where_to_vote),
               title: Text('Home'),
               onTap: () {
                 Navigator.of(context).pushReplacementNamed('/');
@@ -36,16 +51,7 @@ class AppDrawerAdmin extends StatelessWidget {
             ),
             Divider(),
             ListTile(
-              leading: Icon(Icons.payment),
-              title: Text('Role'),
-              onTap: () {
-                // Navigator.of(context).pop();
-                // Navigator.of(context).pushNamed(AdminRoleScreen.routeName);
-              },
-            ),
-            Divider(),
-            ListTile(
-              leading: Icon(Icons.payment),
+              leading: Icon(Icons.ballot),
               title: Text('Users'),
               onTap: () {
                 // Navigator.of(context).pop();

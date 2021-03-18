@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:voting_system_flutter/blocs/result/result.dart';
 import 'package:voting_system_flutter/models/model.dart';
 import 'package:voting_system_flutter/screens/route.dart';
 import 'package:voting_system_flutter/screens/user_result_detail_screen.dart';
@@ -56,12 +58,12 @@ class ResultComponentUser extends StatelessWidget{
                               children: [
                                 CircleAvatar(
                                   backgroundColor: Colors.amberAccent,
-                                  radius: 25,
+                                  radius: 35,
                                   child: Text(
                                     result.party.name,
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 30.0,
+                                      fontSize: 15.0,
                                     ),
                                   ),
                                 ),
@@ -69,10 +71,46 @@ class ResultComponentUser extends StatelessWidget{
                                   height: 5,
                                 ),
                                 Container(
-                                  child: Text(result.ballot.toString()),
-                                )
+                                  child: Row(
+                                    children: <Widget>[
+                                      Text("number of Votes: ",
+                                        style: TextStyle(
+                                            color: Colors.blueAccent,fontStyle: FontStyle.italic
+                                        ),),
+                                      Text(result.ballot.toString()),
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            InkWell(
+                              onTap: (){
+                                BlocProvider.of<ResultBloc>(context).add(
+                                  UpdateResultEvent(result: result),
+                                );
+                              },
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    Icons.where_to_vote,
+                                    color: Colors.purpleAccent,
+                                  ),
+                                  Text(
+                                    "Vote",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic,
+                                      decoration: TextDecoration.underline,
+                                      color: Colors.blue,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+
 
                           ],
                         ),

@@ -10,7 +10,6 @@ import 'package:voting_system_flutter/blocs/user/user.dart';
 import 'package:voting_system_flutter/data_provider/data.dart';
 import 'package:voting_system_flutter/repository/repository.dart';
 import 'package:http/http.dart'as http;
-import 'package:voting_system_flutter/screens/home.dart';
 import 'package:voting_system_flutter/screens/login_screen.dart';
 import 'package:voting_system_flutter/screens/route.dart';
 import 'package:voting_system_flutter/util/util.dart';

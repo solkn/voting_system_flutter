@@ -1,3 +1,4 @@
+//import 'dart:html';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -18,22 +19,18 @@ class CandidateDataProvider {
   Future<List<Candidate>> getCandidates() async {
     List<Candidate>candidates;
     final url = "http://192.168.56.1:8080/v1/candidate";
-    print("getting candidate");
 
     try {
       final response = await httpClient.get(url);
-      print("status code for getting candidates");
       print(response.statusCode);
       if (response.statusCode == 200) {
         final extractedData = json.decode(response.body) as List<dynamic>;
-        //final ex = jsonDecode(response.body)as List<dynamic>;
 
         if (extractedData == null) {
           return null;
         }
         else {
           candidates = extractedData.map<Candidate>((json) => Candidate.fromJson(json)).toList();
-          //candidates = ex.map<Candidate>((json)=>Candidate.fromJson(json)).toList();
 
         }
       }
@@ -49,17 +46,17 @@ class CandidateDataProvider {
 
   Future<Candidate> getCandidate(String id) async {
     final url = "https://192.168.56.1:8080/v1/candidate/$id";
-    Candidate cndt;
+    Candidate candidate;
 
     try {
       final response = await httpClient.get(url);
       if (response.statusCode == 200) {
-        final extractedata = json.decode(response.body) as Map<String, dynamic>;
-        if (extractedata == null) {
+        final extractedData = json.decode(response.body) as Map<String, dynamic>;
+        if (extractedData == null) {
           return null;
         }
         else {
-          cndt = Candidate.fromJson(extractedata);
+          candidate = Candidate.fromJson(extractedData);
         }
       }
       else {
@@ -69,7 +66,7 @@ class CandidateDataProvider {
     catch (e) {
       throw e;
     }
-    return cndt;
+    return candidate;
   }
 
 
@@ -100,7 +97,7 @@ class CandidateDataProvider {
         cndt = Candidate.fromJson(extractedData);
       }
       else {
-        throw HttpException("error occured");
+        throw HttpException("error occurred");
       }
     }
     catch (e) {
@@ -129,10 +126,10 @@ class CandidateDataProvider {
           HttpHeaders.authorizationHeader: "Bearer $token",
         },
       );
-
+      String status = response.statusCode.toString();
+      print("status code for updating candidate is: $status");
       if (response.statusCode == 200) {
-        final extractedData = json.decode(response.body) as Map<String,
-            dynamic>;
+        final extractedData = json.decode(response.body) as Map<String,dynamic>;
         cndt = Candidate.fromJson(extractedData);
       }
       else {
@@ -146,15 +143,23 @@ class CandidateDataProvider {
 
   Future<void> deleteCandidate(String id) async {
     final url = "http://198.168.56.1:8080/v1/candidate/$id";
+    Util util = new Util();
+    String token = await util.getUserToken();
 
     try {
-      final response = await httpClient.delete(url);
+      final response = await httpClient.delete(url,
+        headers:{HttpHeaders.authorizationHeader:"Bearer $token"},
+      );
+      String status = response.statusCode.toString();
+      print("candidate deleting status code: $status");
       if (response.statusCode != 200) {
         throw HttpException("error occurred");
       }
     } catch (e) {
       throw e;
     }
+
+
   }
 
 }

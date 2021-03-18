@@ -52,10 +52,11 @@ class LoginScreenState extends State<LoginScreen>{
                          ? SizedBox(
 
                        child: CircularProgressIndicator(
-                         valueColor:AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+                         valueColor:AlwaysStoppedAnimation<Color>(Colors.redAccent),
+                         strokeWidth: 8,
                        ),
-                       height:10.0,
-                       width: 50.0,
+                       height:40.0,
+                       width: 70.0,
 
                      )
 
@@ -93,7 +94,7 @@ class LoginScreenState extends State<LoginScreen>{
                       email = value;
 
                      },
-                      decoration: kTextFieldDecoration.copyWith(
+                      decoration: constTextFieldDecoration.copyWith(
                         hintText: "enter your email",
                       ),
 
@@ -108,7 +109,7 @@ class LoginScreenState extends State<LoginScreen>{
                        password = value;
 
                      },
-                     decoration: kTextFieldDecoration.copyWith(
+                     decoration: constTextFieldDecoration.copyWith(
                        hintText: "enter your password",
                      ),
 

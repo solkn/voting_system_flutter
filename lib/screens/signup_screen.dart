@@ -94,7 +94,7 @@ class SignUpScreenState extends State<SignUpScreen>{
                         onChanged: (value){
                           fullName = value;
                     },
-                       decoration: kTextFieldDecoration.copyWith(
+                       decoration: constTextFieldDecoration.copyWith(
                           hintText: "Enter your fullName",
                     ),
                     ),
@@ -108,7 +108,7 @@ class SignUpScreenState extends State<SignUpScreen>{
                     onChanged: (value){
                     age = int.parse(value);
                     },
-                    decoration: kTextFieldDecoration.copyWith(
+                    decoration: constTextFieldDecoration.copyWith(
                     hintText: "Enter your age",
                     ),
                     ),
@@ -121,7 +121,7 @@ class SignUpScreenState extends State<SignUpScreen>{
                     onChanged: (value){
                     email = value;
                     },
-                    decoration: kTextFieldDecoration.copyWith(
+                    decoration: constTextFieldDecoration.copyWith(
                     hintText: "Enter your email",
                     ),
                     ),
@@ -134,7 +134,7 @@ class SignUpScreenState extends State<SignUpScreen>{
                     onChanged: (value){
                     phone = value;
                     },
-                    decoration: kTextFieldDecoration.copyWith(
+                    decoration: constTextFieldDecoration.copyWith(
                     hintText: "Enter your phone",
                     ),
                     ),
@@ -147,7 +147,7 @@ class SignUpScreenState extends State<SignUpScreen>{
                     onChanged: (value){
                     password = value;
                     },
-                    decoration: kTextFieldDecoration.copyWith(
+                    decoration: constTextFieldDecoration.copyWith(
                     hintText: "Enter your password",
                     ),
                     ),

@@ -94,62 +94,6 @@ class CandidateComponentUser extends StatelessWidget{
                   height: 5.0,
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushNamed(
-                            CandidateAddUpdate.routName,
-                            arguments:
-                            CandidateRoutArgs(candidate: candidate,edit: true),
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            Icon(Icons.update),
-                            Text(
-                              "UPDATE",
-                              style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                fontWeight: FontWeight.bold,
-                                fontStyle: FontStyle.italic,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          BlocProvider.of<CandidateBloc>(context).add(
-                              DeleteCandidateEvent(
-                                  id: candidate.id.toString()));
-                        },
-                        child: Column(
-                          children: [
-                            Icon(
-                              Icons.delete_rounded,
-                              color: Colors.red,
-                            ),
-                            Text(
-                              "DELETE",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontStyle: FontStyle.italic,
-                                decoration: TextDecoration.underline,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                    ],
-                  ),
-                ),
               ],
             ),
           ),

@@ -54,7 +54,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
           controller: controller,
           tabs: [
             Tab(
-              text: "Candidates",
+              text: "Candidate",
             ),
             Tab(
               text: "Result",
