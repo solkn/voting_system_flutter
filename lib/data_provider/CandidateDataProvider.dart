@@ -107,7 +107,7 @@ class CandidateDataProvider {
   }
 
   Future<Candidate> putCandidate(Candidate candidate) async {
-    final url = "http://192.168.56.2:8080/v1/candidate/${candidate.id}";
+    final url = "http://192.168.56.1:8080/v1/candidate/${candidate.id}";
     Candidate cndt;
     Util util = new Util();
     String token = await util.getUserToken();
@@ -123,7 +123,7 @@ class CandidateDataProvider {
         headers: {
 
           HttpHeaders.contentTypeHeader: "application/json",
-          HttpHeaders.authorizationHeader: "Bearer $token",
+          HttpHeaders.authorizationHeader: "Bearer $token"
         },
       );
       String status = response.statusCode.toString();
@@ -142,14 +142,18 @@ class CandidateDataProvider {
   }
 
   Future<void> deleteCandidate(String id) async {
-    final url = "http://198.168.56.1:8080/v1/candidate/$id";
+    final url = "http://192.168.56.1:8080/v1/candidate/$id";
     Util util = new Util();
     String token = await util.getUserToken();
 
     try {
-      final response = await httpClient.delete(url,
-        headers:{HttpHeaders.authorizationHeader:"Bearer $token"},
-      );
+      final response = await httpClient.delete(
+        url,
+        headers:{
+          HttpHeaders.contentTypeHeader:"application/json",
+          HttpHeaders.authorizationHeader:"Bearer $token"
+        },
+       );
       String status = response.statusCode.toString();
       print("candidate deleting status code: $status");
       if (response.statusCode != 200) {

@@ -93,7 +93,7 @@ class ResultDataProvider{
         headers: {
 
                HttpHeaders.contentTypeHeader:"application/json",
-               HttpHeaders.authorizationHeader:"Bearer $token",
+               HttpHeaders.authorizationHeader:"Bearer $token"
         },
       );
       if (response.statusCode == 201){
@@ -112,7 +112,7 @@ class ResultDataProvider{
 
   Future<Result>putResult(Result result)async{
 
-    final url = "http://192.168.56.2:8080/v1/result/${result.id}";
+    final url = "http://192.168.56.1:8080/v1/result/${result.id}";
     Result rslt;
     Util util = new Util();
     String token = await util.getUserToken();
@@ -127,11 +127,12 @@ class ResultDataProvider{
           "party_id":result.partyID,
         }),
         headers: {
-
           HttpHeaders.contentTypeHeader:"application/json",
           HttpHeaders.authorizationHeader:"Bearer $token",
         },
       );
+      String status = response.statusCode.toString();
+      print("status code for voting party:  $status");
 
       if(response.statusCode == 200){
         final extractedData = json.decode(response.body)as Map<String,dynamic>;
@@ -149,7 +150,7 @@ class ResultDataProvider{
 
   Future<void>deleteResult(String id)async{
 
-    final url = "http://198.168.56.1:8080/v1/result/$id";
+    final url = "http://192.168.56.1:8080/v1/result/$id";
 
     try{
 

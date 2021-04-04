@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voting_system_flutter/blocs/result/result.dart';
 import 'package:voting_system_flutter/models/model.dart';
+import 'package:voting_system_flutter/screens/admin_home_screen.dart';
 import 'package:voting_system_flutter/screens/route.dart';
 import 'package:voting_system_flutter/screens/user_result_detail_screen.dart';
 class ResultComponentUser extends StatelessWidget{
@@ -73,7 +74,7 @@ class ResultComponentUser extends StatelessWidget{
                                 Container(
                                   child: Row(
                                     children: <Widget>[
-                                      Text("number of Votes: ",
+                                      Text("Number Of Votes: ",
                                         style: TextStyle(
                                             color: Colors.blueAccent,fontStyle: FontStyle.italic
                                         ),),
@@ -88,9 +89,11 @@ class ResultComponentUser extends StatelessWidget{
                             ),
                             InkWell(
                               onTap: (){
-                                BlocProvider.of<ResultBloc>(context).add(
-                                  UpdateResultEvent(result: result),
-                                );
+                                BlocProvider.of<ResultBloc>(context)
+                                    .add(UpdateResultEvent(result: result));
+                                    // Navigator.of(context).pushNamedAndRemoveUntil(
+                                    //     AdminHomeScreen.routName, (route) => false);
+
                               },
                               child: Column(
                                 children: [

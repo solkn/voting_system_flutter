@@ -5,6 +5,7 @@ import 'package:voting_system_flutter/blocs/candidate/candidate.dart';
 import 'package:voting_system_flutter/models/model.dart';
 import 'package:voting_system_flutter/screens/admin_add_candidate_screen.dart';
 import 'package:voting_system_flutter/screens/admin_candidate_detail_screen.dart';
+import 'package:voting_system_flutter/screens/admin_home_screen.dart';
 import 'package:voting_system_flutter/screens/route.dart';
 
 class CandidateComponentAdmin extends StatelessWidget{
@@ -124,8 +125,8 @@ class CandidateComponentAdmin extends StatelessWidget{
                       ),
                       InkWell(
                         onTap: () {
-                          BlocProvider.of<CandidateBloc>(context).add(
-                              DeleteCandidateEvent(id: candidate.id.toString()));
+                          BlocProvider.of<CandidateBloc>(context)
+                              .add(DeleteCandidateEvent(id: candidate.id.toString()));
                         },
                         child: Column(
                           children: [

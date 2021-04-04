@@ -27,8 +27,10 @@ class CandidateAddUpdateState extends State<CandidateAddUpdate> {
 
   final _formKey = GlobalKey<FormState>();
   final _candidateFocusNode = FocusNode();
+  final _partyFocusNode =FocusNode();
 
   String candidateName = "";
+  int partyID =0;
   Candidate candidate = Candidate();
   bool isInit = false;
   @override
@@ -36,6 +38,7 @@ class CandidateAddUpdateState extends State<CandidateAddUpdate> {
     super.didChangeDependencies();
     if (!isInit && widget.candidateArgs.edit) {
       candidateName = widget.candidateArgs.candidate.name;
+      partyID        =  widget.candidateArgs.candidate.partyID;
       isInit = true;
     }
   }
@@ -43,6 +46,8 @@ class CandidateAddUpdateState extends State<CandidateAddUpdate> {
   @override
   void dispose() {
     _candidateFocusNode.dispose();
+    _partyFocusNode.dispose();
+
 
     super.dispose();
   }
@@ -64,14 +69,14 @@ class CandidateAddUpdateState extends State<CandidateAddUpdate> {
       );
 
       BlocProvider.of<CandidateBloc>(context, listen: false)
-        ..add(UpdateCandidateEvent(candidate: candidate));
+        .add(UpdateCandidateEvent(candidate: candidate));
     }else{
       candidate = Candidate(
         name: candidateName,
-        partyID: widget.candidateArgs.candidate.partyID,
+        partyID: partyID,
       );
       BlocProvider.of<CandidateBloc>(context, listen: false)
-        ..add(PostCandidateEvent(candidate: candidate));
+        .add(PostCandidateEvent(candidate: candidate));
     }
   }
 
@@ -111,7 +116,6 @@ class CandidateAddUpdateState extends State<CandidateAddUpdate> {
 
           }
           if ((state is CandidatePostedState) || (state is CandidateUpdatedState)) {
-            BlocProvider.of<PartyBloc>(context).add(GetPartyEvent());
             BlocProvider.of<CandidateBloc>(context).add(GetCandidateEvent());
             Navigator.pop(context);
           }
@@ -148,9 +152,40 @@ class CandidateAddUpdateState extends State<CandidateAddUpdate> {
                           border: OutlineInputBorder(),
                           labelText: widget.candidateArgs.edit
                               ? widget.candidateArgs.candidate.name:"",
-                          hintText: 'Enter Name'),
+                          hintText: 'Enter Candidate Name'),
                     ),
                   ),
+
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(30, 5, 30, 5),
+                    child: TextFormField(
+                      initialValue: widget.candidateArgs.edit
+                          ? widget.candidateArgs.candidate.partyID.toString():"",
+                      textAlign: TextAlign.left,
+                      keyboardType: TextInputType.number,
+                      autofocus: false,
+                      focusNode: _partyFocusNode,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context)
+                            .requestFocus(_partyFocusNode);
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'invalid input';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        partyID = int.parse(value);
+                      },
+                      decoration: new InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: widget.candidateArgs.edit
+                              ? widget.candidateArgs.candidate.party.name:"",
+                          hintText: 'Enter Party ID'),
+                    ),
+                  ),
+
                 ],
               ),
             ),

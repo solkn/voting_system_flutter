@@ -17,7 +17,9 @@ class UserResultScreen extends StatelessWidget{
           if(state is ResultUpdatingState){
             scaffoldKey.currentState.showSnackBar(SnackBar(
                 content:Text("Voting",style: TextStyle(color: Colors.purpleAccent,
-                fontStyle: FontStyle.italic,fontSize: 20),),),
+                fontStyle: FontStyle.italic,fontSize: 20),),
+                duration: Duration(minutes: 1),
+            ),
             );
             if(state is ResultUpdatedState){
                scaffoldKey.currentState.removeCurrentSnackBar();
@@ -27,9 +29,11 @@ class UserResultScreen extends StatelessWidget{
             if(state is ResultFetchingErrorState){
               scaffoldKey.currentState.removeCurrentSnackBar();
               scaffoldKey.currentState.showSnackBar(SnackBar(
-                    content:Text("Unable to Vote",style:
-                    TextStyle(color: Colors.redAccent,
-                    fontStyle: FontStyle.italic,fontSize: 20),),),
+                      content:Text("Unable to Vote",
+                      style:TextStyle(color: Colors.redAccent,
+                      fontStyle: FontStyle.italic,fontSize: 20),),
+                      duration: Duration(minutes: 1),
+                ),
               );
 
             }
